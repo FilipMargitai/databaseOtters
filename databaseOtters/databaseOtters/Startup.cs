@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using databaseOtters.Model;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,8 +26,8 @@ namespace databaseOtters
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddDbContext<SchoolContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("SchoolContext")));
+            services.AddDbContext<OtterDbContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("OtterDbContext")));
 
         }
 
