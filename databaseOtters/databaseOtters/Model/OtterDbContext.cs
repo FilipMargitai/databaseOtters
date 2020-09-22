@@ -12,6 +12,6 @@ namespace databaseOtters.Model
         public OtterDbContext([NotNullAttribute] DbContextOptions options) : base(options)
         {
         }
+        public virtual DbSet<Otter> Otters { get; set; }
     }
-    public virtual DbSet<Otter> Otters { get; set; }
 }
