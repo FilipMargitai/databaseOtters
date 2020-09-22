@@ -13,5 +13,7 @@ namespace databaseOtters.Model
         {
         }
         public virtual DbSet<Otter> Otters { get; set; }
+        public virtual DbSet<Place> Places { get; set; }
+        public virtual DbSet<Location> Locations { get; set; }
     }
 }
