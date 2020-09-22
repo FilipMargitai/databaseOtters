@@ -12,5 +12,9 @@ namespace databaseOtters.Model
         public string Color { get; set; }
         [Key]
         public int? tattooID { get; set; } 
+        public Otter Mother { get; set; }
+        [Required]
+        public Place place { get; set; }
+        public ICollection<Otter> children { get; set; }
     }
 }

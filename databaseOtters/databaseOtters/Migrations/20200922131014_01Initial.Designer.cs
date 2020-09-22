@@ -10,7 +10,7 @@ using databaseOtters.Model;
 namespace databaseOtters.Migrations
 {
     [DbContext(typeof(OtterDbContext))]
-    [Migration("20200922125428_01Initial")]
+    [Migration("20200922131014_01Initial")]
     partial class _01Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,10 +49,21 @@ namespace databaseOtters.Migrations
                     b.Property<string>("Color")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("MothertattooID")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("placeName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("tattooID");
+
+                    b.HasIndex("MothertattooID");
+
+                    b.HasIndex("placeName");
 
                     b.ToTable("Otters");
                 });
@@ -62,9 +73,34 @@ namespace databaseOtters.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int?>("LocationID")
+                        .HasColumnType("int");
+
                     b.HasKey("Name");
 
+                    b.HasIndex("LocationID");
+
                     b.ToTable("Places");
+                });
+
+            modelBuilder.Entity("databaseOtters.Model.Otter", b =>
+                {
+                    b.HasOne("databaseOtters.Model.Otter", "Mother")
+                        .WithMany("children")
+                        .HasForeignKey("MothertattooID");
+
+                    b.HasOne("databaseOtters.Model.Place", "place")
+                        .WithMany("Otters")
+                        .HasForeignKey("placeName")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("databaseOtters.Model.Place", b =>
+                {
+                    b.HasOne("databaseOtters.Model.Location", "location")
+                        .WithMany("Places")
+                        .HasForeignKey("LocationID");
                 });
 #pragma warning restore 612, 618
         }
