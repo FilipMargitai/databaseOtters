@@ -19,10 +19,7 @@ namespace databaseOtters.Model
         public int MotherId { get; set; }
         [Required]
         public Place place { get; set; }
-
-        [ForeignKey("place")]
         public string PlaceName { get; set; }
-        [ForeignKey("place")]
         public int LocationId { get; set; }
         public ICollection<Otter> children { get; set; }
     }
