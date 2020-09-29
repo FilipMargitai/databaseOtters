@@ -12,7 +12,7 @@ namespace databaseOtters.Model
         [Key]
         public int LocationID { get; set; }
         public string Name { get; set; }
-        [Required]
+        //[Required]
         public ICollection<Place> Places {get; set; }
     }
 }
