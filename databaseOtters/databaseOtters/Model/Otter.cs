@@ -12,11 +12,11 @@ namespace databaseOtters.Model
         public string Name { get; set; }
         public string Color { get; set; }
         [Key]
-        public int TattooID { get; set; }
+        public int? TattooID { get; set; }
         public Otter Mother { get; set; }
 
         [ForeignKey("Mother")]
-        public int MotherId { get; set; }
+        public int? MotherId { get; set; }
 
         [Required]
         public Place Place { get; set; }
