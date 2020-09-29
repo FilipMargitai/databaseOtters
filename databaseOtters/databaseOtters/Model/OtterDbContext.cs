@@ -22,6 +22,13 @@ namespace databaseOtters.Model
             var loc2 = new Location { LocationID = 128, Name = "Jizerské hory", Area = 13165 };
             var loc3 = new Location { LocationID = 76, Name = "Český les", Area = 15478 };
 
+            modelBuilder.Entity<Place>(
+                    p =>
+                    {
+                        p.HasMany(pl => pl.Otters).WithOne(ot => ot.place);
+                    }
+                );
+
             modelBuilder.Entity<Location>().HasData(loc1, loc2, loc3);
 
             modelBuilder.Entity<Place>().HasKey(p => new { p.Name, p.LocationId }); // složené id (z jména a lokace)
