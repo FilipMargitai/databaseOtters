@@ -11,7 +11,7 @@ namespace databaseOtters.Model
         public string Name { get; set; }
         public string Color { get; set; }
         [Key]
-        public int? tattooID { get; set; } 
+        public int tattooID { get; set; } 
         public Otter Mother { get; set; }
         [Required]
         public Place place { get; set; }

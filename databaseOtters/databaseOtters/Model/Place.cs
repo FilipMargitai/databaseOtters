@@ -8,7 +8,6 @@ namespace databaseOtters.Model
 {
     public class Place
     {
-        [Key]
         public string Name { get; set; }
         public ICollection<Otter> Otters { get; set; } 
         [Required]
