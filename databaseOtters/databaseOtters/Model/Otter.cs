@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,8 +14,16 @@ namespace databaseOtters.Model
         [Key]
         public int tattooID { get; set; } 
         public Otter Mother { get; set; }
+
+        [ForeignKey("Mother")] // MotherId se váže na Mother
+        public int MotherId { get; set; }
         [Required]
         public Place place { get; set; }
+
+        [ForeignKey("place")]
+        public string PlaceName { get; set; }
+        [ForeignKey("place")]
+        public int LocationId { get; set; }
         public ICollection<Otter> children { get; set; }
     }
 }

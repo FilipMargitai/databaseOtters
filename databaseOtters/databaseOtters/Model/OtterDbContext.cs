@@ -23,7 +23,8 @@ namespace databaseOtters.Model
             var loc3 = new Location { LocationID = 76, Name = "Český les", Area = 15478 };
 
             modelBuilder.Entity<Location>().HasData(loc1, loc2, loc3);
-            modelBuilder.Entity<Place>().HasKey(p => new { p.Name, p.location }); // složené id (z jména a lokace)
+
+            modelBuilder.Entity<Place>().HasKey(p => new { p.Name, p.LocationId }); // složené id (z jména a lokace)
 
             var plc1 = new Place { Name = "U Studánky", location = loc1 };
             var plc2 = new Place { Name = "U Buku", location = loc1 };
@@ -38,7 +39,7 @@ namespace databaseOtters.Model
                 new Place { Name = "Šalina", location = loc3}
                 );
 
-            var pramatka = new Otter { Name = "Big Matka", tattooID = 1, Color = "žlutá", place = plc1 };
+            var pramatka = new Otter { Name = "Matějova máma", tattooID = 1, Color = "žlutá", place = plc1 };
 
             modelBuilder.Entity<Otter>().HasData(
                 pramatka,
