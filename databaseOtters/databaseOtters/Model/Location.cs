@@ -10,7 +10,7 @@ namespace databaseOtters.Model
     {
         public float Area { get; set; }
         [Key]
-        public int? LocationID { get; set; }
+        public int LocationID { get; set; }
         public string Name { get; set; }
         [Required]
         public ICollection<Place> Places {get; set; }

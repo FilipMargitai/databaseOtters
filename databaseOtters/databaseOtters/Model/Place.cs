@@ -11,6 +11,7 @@ namespace databaseOtters.Model
         [Key]
         public string Name { get; set; }
         public ICollection<Otter> Otters { get; set; } 
+        [Required]
         public Location location { get; set; }
     }
 }

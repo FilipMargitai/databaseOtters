@@ -25,7 +25,7 @@ namespace databaseOtters.Migrations
                 columns: table => new
                 {
                     Name = table.Column<string>(nullable: false),
-                    LocationID = table.Column<int>(nullable: true)
+                    LocationID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -35,7 +35,7 @@ namespace databaseOtters.Migrations
                         column: x => x.LocationID,
                         principalTable: "Locations",
                         principalColumn: "LocationID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(

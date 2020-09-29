@@ -10,7 +10,7 @@ using databaseOtters.Model;
 namespace databaseOtters.Migrations
 {
     [DbContext(typeof(OtterDbContext))]
-    [Migration("20200922131014_01Initial")]
+    [Migration("20200929121151_01Initial")]
     partial class _01Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,7 +23,7 @@ namespace databaseOtters.Migrations
 
             modelBuilder.Entity("databaseOtters.Model.Location", b =>
                 {
-                    b.Property<int?>("LocationID")
+                    b.Property<int>("LocationID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -73,7 +73,7 @@ namespace databaseOtters.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int?>("LocationID")
+                    b.Property<int>("LocationID")
                         .HasColumnType("int");
 
                     b.HasKey("Name");
@@ -100,7 +100,9 @@ namespace databaseOtters.Migrations
                 {
                     b.HasOne("databaseOtters.Model.Location", "location")
                         .WithMany("Places")
-                        .HasForeignKey("LocationID");
+                        .HasForeignKey("LocationID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
