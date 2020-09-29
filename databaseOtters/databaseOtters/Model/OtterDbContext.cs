@@ -25,7 +25,7 @@ namespace databaseOtters.Model
             modelBuilder.Entity<Place>(
                     p =>
                     {
-                        p.HasMany(pl => pl.Otters).WithOne(ot => ot.place);
+                        p.HasMany(pl => pl.Otters).WithOne(ot => ot.place).HasForeignKey(ot => new { ot.LocationId });
                     }
                 );
 
